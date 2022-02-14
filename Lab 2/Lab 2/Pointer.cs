@@ -8,5 +8,6 @@ namespace Lab_2
 {
     internal class Pointer
     {
+        //kanske behöver denna?
     }
 }
