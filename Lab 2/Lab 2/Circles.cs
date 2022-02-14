@@ -8,5 +8,8 @@ namespace Lab_2
 {
     internal class Circles
     {
+
+            
+        
     }
 }
