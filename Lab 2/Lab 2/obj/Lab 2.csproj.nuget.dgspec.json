@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\patri\\source\\repos\\Lab 2\\Lab 2\\Lab 2.csproj": {}
+    "C:\\Users\\patri\\Documents\\GitHub\\Lab_2\\Lab 2\\Lab 2\\Lab 2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\patri\\source\\repos\\Lab 2\\Lab 2\\Lab 2.csproj": {
+    "C:\\Users\\patri\\Documents\\GitHub\\Lab_2\\Lab 2\\Lab 2\\Lab 2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\patri\\source\\repos\\Lab 2\\Lab 2\\Lab 2.csproj",
+        "projectUniqueName": "C:\\Users\\patri\\Documents\\GitHub\\Lab_2\\Lab 2\\Lab 2\\Lab 2.csproj",
         "projectName": "Lab 2",
-        "projectPath": "C:\\Users\\patri\\source\\repos\\Lab 2\\Lab 2\\Lab 2.csproj",
+        "projectPath": "C:\\Users\\patri\\Documents\\GitHub\\Lab_2\\Lab 2\\Lab 2\\Lab 2.csproj",
         "packagesPath": "C:\\Users\\patri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\patri\\source\\repos\\Lab 2\\Lab 2\\obj\\",
+        "outputPath": "C:\\Users\\patri\\Documents\\GitHub\\Lab_2\\Lab 2\\Lab 2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\patri\\AppData\\Roaming\\NuGet\\NuGet.Config",
