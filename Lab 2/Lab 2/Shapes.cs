@@ -8,17 +8,33 @@ namespace Lab_2
 {
     public class Shapes 
     {
-        string shape;
-        int x;
-        int y;
-        int length;
-        int points;
+         string shape;
+         int x;
+         int y;
+         int length;
+         int points; 
+        // ^ Behöver vi inte {get; set;} på dom?
 
-        Shapes() { }
-        public Shapes(int p) { points = p; }
-        public string GetShape() { return shape; }
+         public Shapes(int p) { points = p; }
+         public string GetShape() { return shape; }
 
-        //Gör Circles, Squares, Triangles och de likadana attributen, skrivs här å gör så att de inherit denna class.
-        // sen gör jag en lista av shapes här, å skickar det till en csv fil.
-    }
+      
+      
+        public Shapes() {
+            
+        }
+
+        //public List<Shapes> ListAddCsv()
+        //{
+        //    List<Shapes> NewShapes = new List<Shapes>();
+        //    NewShapes.Add(new Squares("Square", 1, 5, 9, 100));
+        //    NewShapes.Add(new Squares("Square", 1, 3, 5, 200));
+
+        //    return NewShapes;
+
+
+        //}
+      
+
+}
 }

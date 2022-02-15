@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lab_2
 {
-     class Squares
+     class Squares : Shapes
     {
-       
+        
+
+        public Squares()
+        {
+            
+
+        }
+
+
     }
 }
