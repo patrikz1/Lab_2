@@ -8,12 +8,12 @@ namespace Lab_2
 {
      class Squares : Shapes
     {
-        
+
 
         public Squares()
         {
-            
-
+       
+          
         }
 
 
