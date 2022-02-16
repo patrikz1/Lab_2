@@ -24,25 +24,31 @@ namespace Lab_2
 
         }
 
-        public void CsvSeparation(string csvData)
+        public void CsvSeparation(string pointCord, string csvData)
         {
             string[] rowSep = csvData.Split(';');
-            foreach (string line in rowSep)
+
+
+
+
+
+
+            string[] pointcordSep = pointCord.Split(",");
+            int pointCordInt = 0;
+            var parseArrayToInt = (from i in pointcordSep where int.TryParse(i, out pointCordInt) select pointCordInt).ToArray();
+            int arraylength = parseArrayToInt.Count();
+
+            if (arraylength == 2)
             {
-              
+               // set x = pointCordInt[0] o Y = pointCordInt[1] å skicka, alternativt skicka array till pointer dirr
             }
+            else
+            {
+                Console.WriteLine("Not 2 valid coordinates separated by a comma");
+            }
+
+
         }
-
-        //public List<Shapes> ListAddCsv()
-        //{
-        //    List<Shapes> NewShapes = new List<Shapes>();
-        //    NewShapes.Add(new Squares("Square", 1, 5, 9, 100));
-        //    NewShapes.Add(new Squares("Square", 1, 3, 5, 200));
-
-        //    return NewShapes;
-
-
-        //}
 
 
     }
