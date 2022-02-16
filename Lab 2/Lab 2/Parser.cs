@@ -13,13 +13,13 @@ namespace Lab_2
 
         public Parser(string pointCord, string csvData)
         {
-            string[] rowSep = csvData.Split(';');
+            PointParser(pointCord);
+            CsvParser(csvData);
+            pointer newpointer = new pointer(xCord, yCord);
+        }
 
-
-
-
-
-
+        public void PointParser(string pointCord)
+        {
             string[] pointcordSep = pointCord.Split(",");
             int pointCordInt = 0;
             var parseArrayToInt = (from i in pointcordSep where int.TryParse(i, out pointCordInt) select pointCordInt).ToArray();
@@ -29,14 +29,19 @@ namespace Lab_2
             {
                 xCord = parseArrayToInt[0];
                 yCord = parseArrayToInt[1];
-
-                // set x = pointCordInt[0] o Y = pointCordInt[1] å skicka, alternativt skicka array till pointer dirr
             }
             else
             {
                 Console.WriteLine("Not 2 valid coordinates separated by a comma");
             }
-            pointer newpointer = new pointer(xCord, yCord);
+            //pointer newpointer = new pointer(xCord, yCord);
         }
+        public void CsvParser(string csvData)
+        {
+            string[] rowSep = csvData.Split(';');
+           // assign values to variables in shapes based on name of header OR simply the order since they are always ordered.
+
+        }
+        
     }
 }
