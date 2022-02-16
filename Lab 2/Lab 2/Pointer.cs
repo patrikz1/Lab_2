@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lab_2
 {
-    internal class pointer { }
-  
+    internal class pointer {
 
-    
-    
+        public pointer(int x, int y)
+        {
+            Console.WriteLine(x);
+            Console.WriteLine(y);
 
+        }
+
+
+    }
+         
 }
