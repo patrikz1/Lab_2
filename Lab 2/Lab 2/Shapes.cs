@@ -8,22 +8,29 @@ namespace Lab_2
 {
     public class Shapes 
     {
-        string shape = "Square";
-        int x;
-        int y;
-        int length;
-        int points;
+        string shape { get; set; }
+        int x { get; set; }
+        int y { get; set; }
+        int length { get; set; }
+        int points { get; set; }
 
         // ^ Behöver vi inte {get; set;} på dom?
 
-        public Shapes(int p) { points = p; }
-         public string GetShape() { return shape; }
+        public string GetShape() { return shape; }
 
 
     
         public Shapes() {
-    
-           
+
+        }
+
+        public void CsvSeparation(string csvData)
+        {
+            string[] rowSep = csvData.Split(';');
+            foreach (string line in rowSep)
+            {
+              
+            }
         }
 
         //public List<Shapes> ListAddCsv()

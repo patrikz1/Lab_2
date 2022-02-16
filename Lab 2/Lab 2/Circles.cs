@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Lab_2
 {
-    internal class Circles : Shapes
+    internal class Circles
     {
 
-            
+        public Circles()
+        {
+
+        }
         
     }
 }
