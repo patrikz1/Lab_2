@@ -41,13 +41,18 @@ namespace Lab_2
         }
         public void CsvParser(string csvData)
         {
-            /*This creates a string array then splits the csvData, trims each csvData element at the start and end of the string, 
-              replaces any potential spaces in middle of string with emptyspace (removes them) and then finally removes any completely null entries and converts to an array */
-            string[] rowSep = csvData.Split(';').Select(csvData => csvData.Trim().Replace(" ","")).Where(csvData => !string.IsNullOrEmpty(csvData)).ToArray();
+            /*This creates a string array, then splits the csvData, replaces spacing from " " to "" at any point in the string, 
+              removes any null(shouldn't be any due to readline check) or empty string entries and converts to an array */
+            string[] rowSep = csvData.Split(';').Select(csvData => csvData.Replace(" ","")).Where(csvData => !string.IsNullOrEmpty(csvData)).ToArray();
+            //If the aray length is 0 write "no valid csv data". (already checked for null at readline initially AND above, but can still be 0 if there was an empty string that got removed above)
+            if (rowSep.Length == 0)
+            {
+                Console.WriteLine("No valid csv data");
+            }
 
             // assign values to variables in shapes based on name of header OR simply the order since they are always ordered.
             // kanske behöver multi dimensional array ( splitta två gånger )   
-            
+
 
         }
 

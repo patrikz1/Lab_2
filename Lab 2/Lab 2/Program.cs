@@ -2,11 +2,18 @@
 using Lab_2;
 
 
-string pointCord = Console.ReadLine();
-string csvData = Console.ReadLine();
+string? pointCord = Console.ReadLine();
+string? csvData = Console.ReadLine();
 
-Parser parser = new Parser(pointCord, csvData);
-
+//More likely to be just an empty string (which is parsed later) rather than null, but implemented to be fail-safe.
+if (pointCord != null && csvData != null)
+{
+    Parser parser = new Parser(pointCord, csvData);
+}
+else
+{
+    Console.WriteLine("Null values, try again!");
+}
 
 // kolla om csv data är uppdelat här, isf kan vi skicka den + pointcord tsms till en point metod
 // annars skicka med pointcord till csvSep å sen efter uppdelningen i kvar, skicka båda till en point metod.
