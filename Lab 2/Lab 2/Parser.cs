@@ -38,7 +38,6 @@ namespace Lab_2
             {
                 Console.WriteLine("Not 2 valid coordinates separated by a comma");
             }
-            //pointer newpointer = new pointer(xCord, yCord);
         }
         public void CsvParser(string csvData)
         {
@@ -47,7 +46,7 @@ namespace Lab_2
             string[] rowSep = csvData.Split(';').Select(csvData => csvData.Trim().Replace(" ","")).Where(csvData => !string.IsNullOrEmpty(csvData)).ToArray();
 
             // assign values to variables in shapes based on name of header OR simply the order since they are always ordered.
-            // kanske behöver multi dimensional array   
+            // kanske behöver multi dimensional array ( splitta två gånger )   
             
 
         }
