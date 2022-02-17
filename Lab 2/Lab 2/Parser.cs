@@ -20,11 +20,15 @@ namespace Lab_2
 
         public void PointParser(string pointCord)
         {
-            string[] pointcordSep = pointCord.Split(",");
-            int pointCordInt = 0;
-            var parseArrayToInt = (from i in pointcordSep where int.TryParse(i, out pointCordInt) select pointCordInt).ToArray();
-            int arraylength = parseArrayToInt.Count();
+            // Split the two inputs by comma
+            string[] pointcordSep = pointCord.Split(",");        
 
+            int pointCordInt = 0;
+            //Create a int array with the two split numbers and remove any inputs that is not integers (including whitespace)
+            var parseArrayToInt = (from i in pointcordSep where int.TryParse(i, out pointCordInt) select pointCordInt).ToArray();
+            //Count number of array elements
+            int arraylength = parseArrayToInt.Count();
+            //If count equals 2, set these two to xCord and yCord respectivly. 
             if (arraylength == 2)
             {
                 xCord = parseArrayToInt[0];
@@ -38,10 +42,15 @@ namespace Lab_2
         }
         public void CsvParser(string csvData)
         {
-            string[] rowSep = csvData.Split(';');
-           // assign values to variables in shapes based on name of header OR simply the order since they are always ordered.
+            /*This creates a string array then splits the csvData, trims each csvData element at the start and end of the string, 
+              replaces any potential spaces in middle of string with emptyspace (removes them) and then finally removes any completely null entries and converts to an array */
+            string[] rowSep = csvData.Split(';').Select(csvData => csvData.Trim().Replace(" ","")).Where(csvData => !string.IsNullOrEmpty(csvData)).ToArray();
+
+            // assign values to variables in shapes based on name of header OR simply the order since they are always ordered.
+            // kanske behöver multi dimensional array   
+            
 
         }
-        
+
     }
 }
