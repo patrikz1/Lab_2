@@ -8,11 +8,11 @@ namespace Lab_2
 {
     public class Shapes 
     {
-        string shape { get; set; }
-        int x { get; set; }
-        int y { get; set; }
-        int length { get; set; }
-        int points { get; set; }
+        public string shape { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
+        public int length { get; set; }
+        public int points { get; set; }
 
 
         // ^ Behöver vi inte {get; set;} på dom?

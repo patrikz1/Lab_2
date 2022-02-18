@@ -41,19 +41,46 @@ namespace Lab_2
         }
         public void CsvParser(string csvData)
         {
-            /*This creates a string array, then splits the csvData, replaces spacing from " " to "" at any point in the string, 
-              removes any null(shouldn't be any due to readline check) or empty string entries and converts to an array */
-            string[] rowSep = csvData.Split(';').Select(csvData => csvData.Replace(" ","")).Where(csvData => !string.IsNullOrEmpty(csvData)).ToArray();
+            var csvRows = csvData.Split(';');
+            List<Shapes> shapes = new List<Shapes>();
+            if (csvRows.Count() > 0)
+                foreach (var row in csvRows)
+                {
+                    var csvColumn = row.Split(',').Select(csvData => csvData.Replace(" ", "")).Where(csvData => !string.IsNullOrEmpty(csvData)).Distinct().ToList();
+                        if (csvColumn.Count() == 5)
+                        {
+                            shapes.Add(new()
+                            {
+                                shape = csvColumn[0], //where csvcolumns[0] contains = "shape"
 
-            //If the aray length is 0 write "no valid csv data". (already checked for null at readline initially AND above, but can still be 0 if there was an empty string that got removed above)
-            if (rowSep.Length == 0)
-            {
-                Console.WriteLine("No valid csv data");
-            }
- 
-            // assign values to variables in shapes based on name of header OR simply the order since they are always ordered.
-            // kanske behöver multi dimensional array ( splitta två gånger )   
-            //kanske behöver join för å joina values med text på row[0]
+
+
+                            });
+                        }
+                        else
+                        {
+                        Console.WriteLine("All inputs required to work!");
+                        }
+                }            
+            else
+                {
+                Console.WriteLine("No CSV data input");
+                }
+
+          
+            
+            //OLD STUFF BELOW -> TA BORT SEN
+
+            /*This creates a string array, then splits the csvData rows, replaces spacing from " " to "" at any point in the string, 
+              removes any null(shouldn't be any due to readline check) or empty string entries, splits the columns and converts to an array */
+            //string[][] rowSep = csvData.Split(';').
+            //    Select(csvData => csvData.Replace(" ", "")).Where(csvData => !string.IsNullOrEmpty(csvData)).Select(csvData => csvData.Split(',')).ToArray();
+
+            //If the array length is 0 write "no valid csv data". (already checked for null at readline initially AND above, but can still be 0 if there was an empty string that got removed above)
+            //if (rowSep.Length == 0)
+            //{
+            //    Console.WriteLine("No valid csv data");
+            //}        
 
         }
 
