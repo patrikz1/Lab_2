@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Lab_2;
 
-
 string? pointCord = Console.ReadLine();
 string? csvData = Console.ReadLine();
 

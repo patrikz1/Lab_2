@@ -42,6 +42,8 @@ namespace Lab_2
         public void CsvParser(string csvData)
         {
             var csvRows = csvData.Split(';');
+            var headerValues = csvRows[0].Split(',');
+
             List<Shapes> shapes = new List<Shapes>();
             if (csvRows.Count() > 0)
                 foreach (var row in csvRows)
@@ -51,8 +53,7 @@ namespace Lab_2
                         {
                             shapes.Add(new()
                             {
-                                shape = csvColumn[0], //where csvcolumns[0] contains = "shape"
-
+                                shape = csvColumn[0], //same index as where headervalue contains = "Shape"
 
 
                             });
