@@ -8,8 +8,8 @@ namespace Lab_2
 {
     internal class Parser
     {
-        int xCord { get; set; }
-        int yCord { get; set; }
+      public int xCord { get; set; }
+      public int yCord { get; set; }
 
         public Parser(string pointCord, string csvData)
         {
@@ -21,7 +21,7 @@ namespace Lab_2
         public void PointParser(string pointCord)
         {
             // Split the two inputs by comma
-            string[] pointcordSep = pointCord.Split(",");        
+            string[] pointcordSep = pointCord.Split(",");
 
             int pointCordInt = 0;
             //Create a int array with the two split numbers and remove any inputs that is not integers (including whitespace)
@@ -59,7 +59,7 @@ namespace Lab_2
                         }
                         else
                         {
-                        Console.WriteLine("All inputs required to work!");
+                        Console.WriteLine(row + " does not have 5 inputs and cannot be added!");
                         }
                 }            
             else
