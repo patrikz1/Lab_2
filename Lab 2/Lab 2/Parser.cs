@@ -43,15 +43,16 @@ namespace Lab_2
         {
             /*This creates a string array, then splits the csvData, replaces spacing from " " to "" at any point in the string, 
               removes any null(shouldn't be any due to readline check) or empty string entries and converts to an array */
-            string[] rowSep = csvData.Split(';').Select(csvData => csvData.Replace(" ","")).Where(csvData => !string.IsNullOrEmpty(csvData)).ToArray();
+            string[] rowSep = csvData.Split(';').Select(csvData => csvData.Replace(" ","")).Where(csvData => !string.IsNullOrEmpty(csvData)).ToArray();                     
             //If the aray length is 0 write "no valid csv data". (already checked for null at readline initially AND above, but can still be 0 if there was an empty string that got removed above)
             if (rowSep.Length == 0)
             {
                 Console.WriteLine("No valid csv data");
             }
-
+ 
             // assign values to variables in shapes based on name of header OR simply the order since they are always ordered.
             // kanske behöver multi dimensional array ( splitta två gånger )   
+            //kanske behöver join för å joina values med text på row[0]
 
 
         }
