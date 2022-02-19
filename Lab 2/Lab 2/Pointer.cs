@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 namespace Lab_2
 {
     internal class pointer {
-
-        public pointer(int x, int y)
+        
+        public pointer(int xCord, int yCord)
         {
-            Console.WriteLine(x);
-            Console.WriteLine(y);
-
+            
         }
 
-
+  
     }
          
 }

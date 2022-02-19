@@ -21,9 +21,16 @@ namespace Lab_2
 
 
 
-        public Shapes() {
+        public Shapes()
+        {
 
         }
+        public Shapes(List<Shapes> shapes)
+        {
+
+        }
+        
+
 
 
     }
