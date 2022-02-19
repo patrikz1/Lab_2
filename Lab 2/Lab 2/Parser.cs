@@ -15,7 +15,6 @@ namespace Lab_2
         {
             PointParser(pointCord);
             CsvParser(csvData);
-            pointer newpointer = new pointer(xCord, yCord);
         }
 
         public void PointParser(string pointCord)
@@ -38,51 +37,64 @@ namespace Lab_2
             {
                 Console.WriteLine("Not 2 valid coordinates separated by a comma");
             }
+
+
+
+            //Send to whatever method we need
+            pointer newpointer = new pointer(xCord, yCord);
         }
+
         public void CsvParser(string csvData)
         {
-            var csvRows = csvData.Split(';');
+            var csvRows = csvData.Split(';').ToList();
             var headerValues = csvRows[0].Split(',');
 
+            var colShape = headerValues.ToList().FindIndex(i => i.Equals("SHAPE"));
+            var colX = headerValues.ToList().FindIndex(i => i.Equals("X"));
+            var colY = headerValues.ToList().FindIndex(i => i.Equals("Y"));
+            var colLength = headerValues.ToList().FindIndex(i => i.Equals("LENGTH"));
+            var colPoints = headerValues.ToList().FindIndex(i => i.Equals("POINTS"));
+
             List<Shapes> shapes = new List<Shapes>();
+            //remove first entry (header)
+            csvRows.RemoveAt(0);
+            csvRows.RemoveAll(string.IsNullOrWhiteSpace);
             if (csvRows.Count() > 0)
                 foreach (var row in csvRows)
                 {
-                    var csvColumn = row.Split(',').Select(csvData => csvData.Replace(" ", "")).Where(csvData => !string.IsNullOrEmpty(csvData)).Distinct().ToList();
+                    var csvColumn = row.Split(',');
+                    try
+                    {
                         if (csvColumn.Count() == 5)
                         {
                             shapes.Add(new()
                             {
-                                shape = csvColumn[0], //same index as where headervalue contains = "Shape"
-
-
+                                shape = csvColumn[colShape],
+                                x = Int32.Parse(csvColumn[colX]),
+                                y = Int32.Parse(csvColumn[colY]),
+                                length = Int32.Parse(csvColumn[colLength]),
+                                points = Int32.Parse(csvColumn[colPoints]),
                             });
                         }
                         else
                         {
-                        Console.WriteLine(row + " does not have 5 inputs and cannot be added!");
+                            Console.WriteLine(row + " does not have 5 inputs and cannot be added!");
                         }
+                    }
+                    catch (FormatException e)
+                    {
+                        Console.WriteLine("You did not enter a valid integer for one or more of the fields! Give this message to IT: \n" + e);
+                    }
                 }            
             else
                 {
                 Console.WriteLine("No CSV data input");
                 }
 
-          
-            
-            //OLD STUFF BELOW -> TA BORT SEN
 
-            /*This creates a string array, then splits the csvData rows, replaces spacing from " " to "" at any point in the string, 
-              removes any null(shouldn't be any due to readline check) or empty string entries, splits the columns and converts to an array */
-            //string[][] rowSep = csvData.Split(';').
-            //    Select(csvData => csvData.Replace(" ", "")).Where(csvData => !string.IsNullOrEmpty(csvData)).Select(csvData => csvData.Split(',')).ToArray();
 
-            //If the array length is 0 write "no valid csv data". (already checked for null at readline initially AND above, but can still be 0 if there was an empty string that got removed above)
-            //if (rowSep.Length == 0)
-            //{
-            //    Console.WriteLine("No valid csv data");
-            //}        
-
+            // Send this wherever you need
+            var Shapelist = new Shapes(shapes);
         }
 
     }

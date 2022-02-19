@@ -10,13 +10,10 @@ namespace Lab_2
         
         public pointer(int xCord, int yCord)
         {
-            pointerMethod(xCord, yCord);
-        }
-
-        public void pointerMethod(int xCord, int yCord)
-        {
             
         }
+
+  
     }
          
 }
