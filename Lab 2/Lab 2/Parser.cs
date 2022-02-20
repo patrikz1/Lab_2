@@ -43,34 +43,34 @@ namespace Lab_2
 
         public void CsvParser(string csvData)
         {
-            var csvRows = csvData.Replace(" ","").Split(';').ToList();
-            var headerValues = csvRows[0].Split(',');
+            var Rows = csvData.Replace(" ","").Split(';').ToList();
+            var headerText = Rows[0].Split(',');
 
-            var colShape = headerValues.ToList().FindIndex(i => i.Equals("SHAPE"));
-            var colX = headerValues.ToList().FindIndex(i => i.Equals("X"));
-            var colY = headerValues.ToList().FindIndex(i => i.Equals("Y"));
-            var colLength = headerValues.ToList().FindIndex(i => i.Equals("LENGTH"));
-            var colPoints = headerValues.ToList().FindIndex(i => i.Equals("POINTS"));
+            var columnShape = headerText.ToList().FindIndex(i => i.Equals("SHAPE"));
+            var columnX = headerText.ToList().FindIndex(i => i.Equals("X"));
+            var columnY = headerText.ToList().FindIndex(i => i.Equals("Y"));
+            var columnLength = headerText.ToList().FindIndex(i => i.Equals("LENGTH"));
+            var columnPoints = headerText.ToList().FindIndex(i => i.Equals("POINTS"));
 
             List<Shapes> shapes = new List<Shapes>();
 
-            if (csvRows.Count() > 0) 
+            if (Rows.Count() > 0) 
             {
                 try
                 {
-                    foreach (var row in csvRows.Skip(1))
+                    foreach (var row in Rows.Skip(1))
                     {
-                        var csvColumn = row.Split(',');
+                        var columns = row.Split(',');
 
-                        if (csvColumn.Count() == 5)
+                        if (columns.Count() == 5)
                         {
                             shapes.Add(new()  // ta bort 'shapes' inom new?
                             {
-                                Shape = csvColumn[colShape],
-                                X = Int32.Parse(csvColumn[colX]),
-                                Y = Int32.Parse(csvColumn[colY]),
-                                Length = Int32.Parse(csvColumn[colLength]),
-                                Points = Int32.Parse(csvColumn[colPoints]),
+                                Shape = columns[columnShape],
+                                X = Int32.Parse(columns[columnX]),
+                                Y = Int32.Parse(columns[columnY]),
+                                Length = Int32.Parse(columns[columnLength]),
+                                Points = Int32.Parse(columns[columnPoints]),
 
                             }) ;    
                             
