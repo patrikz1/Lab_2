@@ -8,28 +8,27 @@ namespace Lab_2
 {
     public class Shapes 
     {
-        public string shape { get; set; }
-        public int x { get; set; }
-        public int y { get; set; }
-        public int length { get; set; }
-        public int points { get; set; }
+        public string? Shape { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Length { get; set; }
+        public int Points { get; set; }
 
-
-        // ^ Behöver vi inte {get; set;} på dom?
-
-        //public string GetShape() { return shape; }
-
-
-
+       /*
+        public List<Shapes> ShapesList { get; set; }
+        public Shapes(List<Shapes> ShapesList)
+        {
+            this.ShapesList = ShapesList;
+        }
+        
+        kanske behöver detta?
+       */
         public Shapes()
         {
 
         }
-        public Shapes(List<Shapes> shapes)
-        {
 
-        }
-        
+     
 
 
 
