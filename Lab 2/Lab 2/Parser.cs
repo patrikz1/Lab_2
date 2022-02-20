@@ -43,9 +43,13 @@ namespace Lab_2
 
         public void CsvParser(string csvData)
         {
+            //Replace spaces into empty strings in order to nullify whitespace and split rows based on ';'
             var Rows = csvData.Replace(" ","").Split(';').ToList();
+            //Isolate only the first row (the header) and split the columns based on ','
             var headerText = Rows[0].Split(',');
 
+            /*Make variables based on where the index of the headerText equals the string name
+            of what im searching for to be able to assign the values correctly no matter what order the input comes in.*/
             var columnShape = headerText.ToList().FindIndex(i => i.Equals("SHAPE"));
             var columnX = headerText.ToList().FindIndex(i => i.Equals("X"));
             var columnY = headerText.ToList().FindIndex(i => i.Equals("Y"));
@@ -53,18 +57,19 @@ namespace Lab_2
             var columnPoints = headerText.ToList().FindIndex(i => i.Equals("POINTS"));
 
             List<Shapes> shapes = new List<Shapes>();
-
+            //If there is any rows
             if (Rows.Count() > 0) 
             {
                 try
-                {
+                {   //foreach, skip first as it's the headerText
                     foreach (var row in Rows.Skip(1))
                     {
+                        //Split columns based on ','
                         var columns = row.Split(',');
-
+                        //If there is 5 columns then..
                         if (columns.Count() == 5)
-                        {
-                            shapes.Add(new()  // ta bort 'shapes' inom new?
+                        {   //add to list based off index which i specified above and parse Integers
+                            shapes.Add(new()  
                             {
                                 Shape = columns[columnShape],
                                 X = Int32.Parse(columns[columnX]),
@@ -76,21 +81,21 @@ namespace Lab_2
                             
                         }
                         else
-                        {
+                        {   //Message if it does not have 5 inputs
                             Console.WriteLine(" ' " + row +" ' " + " does not have 5 inputs and cannot be added!");
                         }
                     }
-                }
+                }//Catch exceptions and display them for clarification
                 catch (Exception e)
                 {
                     Console.WriteLine("Something went wrong : \n" + e);
                 }
-            }
+            }// if Rows count is 0
             else
             {
                 Console.WriteLine("No CSV data input");
             }
-
+            //Send XCord and YCord from PointerParser (which was stored in variables at the top) as well as the list just created to constructor of pointer
             pointer newpointer = new pointer(XCord, YCord, shapes);
         }
     }

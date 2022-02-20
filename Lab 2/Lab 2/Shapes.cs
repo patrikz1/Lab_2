@@ -14,15 +14,7 @@ namespace Lab_2
         public int Length { get; set; }
         public int Points { get; set; }
 
-       /*
-        public List<Shapes> ShapesList { get; set; }
-        public Shapes(List<Shapes> ShapesList)
-        {
-            this.ShapesList = ShapesList;
-        }
-        
-        kanske behöver detta?
-       */
+
         public Shapes()
         {
 
