@@ -21,7 +21,7 @@ namespace Lab_2
         public void PointParser(string pointCord)
         {
             // Split the two inputs by comma
-            string[] pointcordSep =  pointCord.Replace("\"" , "").Split(",");
+            string[] pointcordSep =  pointCord.Replace("\"" , "").Replace("(","").Replace(")","").Split(",");
             
 
             int pointCordInt = 0;
@@ -46,7 +46,7 @@ namespace Lab_2
         public void CsvParser(string CsvInput)
         {
             //Replace spaces into empty strings in order to nullify whitespace and split rows based on ';'
-            var Rows = CsvInput.Replace(" ","").Split(';')
+            var Rows = CsvInput.Replace(" ","").Replace("\"", "").Split(';')
                 .Where(row => !string.IsNullOrWhiteSpace(row)).Distinct().ToList();
 
             //Isolate only the first row (the header) and split the columns based on ','
