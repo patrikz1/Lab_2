@@ -19,6 +19,7 @@ namespace Lab_2
 
         public void ShapeScoreHit(List<Shapes>shapesHit)
         {
+            //Get Circles & Squares from shapesHit list based on Shape name and select that object
             var Circles = from i in shapesHit where i.Shape == "CIRCLE" select i;
             var Squares = from i in shapesHit where i.Shape == "SQUARE" select i;
 
@@ -72,6 +73,7 @@ namespace Lab_2
             int finalScore = (int)Math.Round(FinalScoreHit - FinalScoreMiss / 4);
             
             Console.WriteLine(finalScore);
+
         }
 
     }

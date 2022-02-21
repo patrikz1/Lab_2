@@ -1,13 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Lab_2;
+﻿using Lab_2;
 
 string? pointCord = Console.ReadLine();
-string? csvData = Console.ReadLine();
+string? CsvInput = Console.ReadLine();
 
 //More likely to be just an empty string (which is parsed later) rather than null, but implemented to be fail-safe.
-if (pointCord != null && csvData != null && pointCord != "" && csvData !="" )
+if (pointCord != null && CsvInput != null && pointCord != "" && CsvInput !="" )
 {
-    Parser parser = new Parser(pointCord, csvData);
+    Parser parser = new Parser(pointCord, CsvInput);
 }
 else
 {

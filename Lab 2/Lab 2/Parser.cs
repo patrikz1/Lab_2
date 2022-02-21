@@ -11,10 +11,10 @@ namespace Lab_2
       public int XCord { get; set; }
       public int YCord { get; set; }
 
-        public Parser(string pointCord, string csvData)
+        public Parser(string pointCord, string CsvInput)
         {
             PointParser(pointCord);
-            CsvParser(csvData);
+            CsvParser(CsvInput);
 
         }
 
@@ -36,39 +36,40 @@ namespace Lab_2
             }
             else
             {
-                Console.WriteLine("Not 2 valid coordinates separated by a comma");
+                Console.WriteLine("Not 2 valid coordinates separated by a comma, please try again!");
+                Environment.Exit(1);
             }
 
         }
 
-        public void CsvParser(string csvData)
+        public void CsvParser(string CsvInput)
         {
             //Replace spaces into empty strings in order to nullify whitespace and split rows based on ';'
-            var Rows = csvData.Replace(" ","").Split(';').ToList();
+            var Rows = CsvInput.Replace(" ","").Split(';').ToList();
             //Isolate only the first row (the header) and split the columns based on ','
-            var headerText = Rows[0].Split(',').ToList();
+            var HeaderColumns = Rows[0].Split(',').ToList();
 
             /*Make variables based on where the index of the headerText equals the string name
             of what im searching for to be able to assign the values correctly no matter what order the input comes in.*/
-            var columnShape = headerText.FindIndex(i => i.Equals("SHAPE"));
-            var columnX = headerText.FindIndex(i => i.Equals("X"));
-            var columnY = headerText.FindIndex(i => i.Equals("Y"));
-            var columnLength = headerText.FindIndex(i => i.Equals("LENGTH"));
-            var columnPoints = headerText.FindIndex(i => i.Equals("POINTS"));
+            var columnShape = HeaderColumns.FindIndex(i => i.Equals("SHAPE"));
+            var columnX = HeaderColumns.FindIndex(i => i.Equals("X"));
+            var columnY = HeaderColumns.FindIndex(i => i.Equals("Y"));
+            var columnLength = HeaderColumns.FindIndex(i => i.Equals("LENGTH"));
+            var columnPoints = HeaderColumns.FindIndex(i => i.Equals("POINTS"));
 
             List<Shapes> shapes = new List<Shapes>();
             //If there is any rows
-            if (Rows.Count() > 0) 
+            if (Rows.Count > 0) 
             {
                 try
-                {   //foreach, skip first as it's the headerText
+                {   //foreach, skip first as it's the HeaderColumns
                     foreach (var row in Rows.Skip(1))
                     {
                         //Split columns based on ','
                         var columns = row.Split(',');
                         //If there is 5 columns then..
                         if (columns.Count() == 5)
-                        {   //add to list based off index which i specified above and parse Integers
+                        {   //Add to list based on index which i specified above and parse Integers/Convert to double
                             shapes.Add(new()  
                             {
                                 Shape = columns[columnShape],
@@ -82,7 +83,7 @@ namespace Lab_2
                         }
                         else
                         {   //Message if it does not have 5 inputs
-                            Console.WriteLine(" ' " + row +" ' " + " does not have 5 inputs and cannot be added!");
+                            Console.WriteLine(" ' " + row +" ' " + " <-- Is not configured correctly, please add 5 valid inputs separated by a comma!");
                         }
                     }
                 }//Catch exceptions and display them for clarification
@@ -93,7 +94,8 @@ namespace Lab_2
             }// if Rows count is 0
             else
             {
-                Console.WriteLine("No CSV data input");
+                Console.WriteLine("No CSV data input, please try again!");
+                Environment.Exit(0);
             }
             //Send XCord and YCord from PointerParser (which was stored in variables at the top) as well as the list just created to constructor of pointer
             pointer newpointer = new pointer(XCord, YCord, shapes);

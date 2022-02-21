@@ -10,9 +10,6 @@ namespace Lab_2
         List<Shapes> shapesHit { get; set; }
         List<Shapes> shapesMissed { get; set; }
 
-        public int XCord { get; set; }
-        public int YCord { get; set; }
-
         public pointer(int XCord, int YCord, List<Shapes> shapes)
         {
             HitOrMiss(XCord, YCord, shapes);
