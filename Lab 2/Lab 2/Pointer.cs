@@ -30,15 +30,16 @@ namespace Lab_2
             {
                 var CircleXValue = shape.X;
                 var CircleYValue = shape.Y;
-                var Radius = shape.Length / 2;
+                double Radius = shape.Length / Math.PI / 2;
 
-                bool InsideCircle = (XCord - CircleXValue) * (XCord - CircleXValue) +
-                (YCord - CircleYValue) * (YCord - CircleYValue) <= Radius * Radius;
-                if (InsideCircle)
+                bool InsideCircle = Math.Pow(XCord - CircleXValue, 2) +
+                Math.Pow(YCord - CircleYValue, 2) < Math.Pow(Radius, 2);
+
+                if (InsideCircle == true)
                 {
                     shapesHit.Add(shape);
                 }
-                else
+                else if (InsideCircle == false)
                 {
                     shapesMissed.Add(shape);
                 }
@@ -47,10 +48,13 @@ namespace Lab_2
             {
                 var SquareXValue = shape.X;
                 var SquareYValue = shape.Y;
-                var Length = shape.Length;
 
-                bool InsideSquare = (XCord - SquareXValue) * (XCord - SquareXValue) +
-                (YCord - SquareYValue) * (YCord - SquareYValue) <= Length * Length;
+                var Radius = Math.Pow(shape.Length / 4 / 2, 2) * 2;
+                var finalradius = Math.Sqrt(Radius);
+
+                bool InsideSquare = Math.Pow(XCord - SquareXValue, 2) +
+                Math.Pow(YCord - SquareYValue, 2) < finalradius;
+
                 if (InsideSquare)
                 {
                     shapesHit.Add(shape);
