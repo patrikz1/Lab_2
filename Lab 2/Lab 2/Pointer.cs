@@ -21,20 +21,38 @@ namespace Lab_2
             this.YCord = YCord;
             // behöver kanske inte de "this." över ^ 
 
-            PointsHit(XCord, YCord, shapes);
-            PointsMissed(XCord, YCord, shapes);
+            HitOrMiss(XCord, YCord, shapes);
             
         }
 
-        public void PointsHit(int XCord, int YCord, List<Shapes> shapes)
+        public void HitOrMiss(int XCord, int YCord, List<Shapes> shapes)
         {
-            //Calculate all points hit! store in shapesHit List!
+            var Circles = from i in shapes where i.Shape == "CIRCLE" select i;
+            shapesHit = new List<Shapes>();
+            shapesMissed = new List<Shapes>();
+
+
+            foreach (var shape in Circles)
+            {
+                var CircleXValue = shape.X;
+                var CircleYValue = shape.Y;
+                var Radius = shape.Length / 2;
+
+                bool InsideCircle = ((XCord - CircleXValue) * (XCord - CircleXValue) +
+                (YCord - CircleYValue) * (YCord - CircleYValue) <= Radius * Radius);
+                if (InsideCircle)
+                {
+                    shapesHit.Add(shape);
+                }
+                else
+                {
+                    shapesMissed.Add(shape);
+                }
+            }
+
+            
         }
-        public void PointsMissed(int XCord, int YCord, List<Shapes> shapes)
-        {
-            //All points NOT in shapesHit List from shapes == MISSED! store in shapesMissed
-            //Skicka båda listorna (shapesHit & shapesMissed) till "Scores" klass där uträkning körs ("Scores" har konstruktor input 2 listor av shapes, 1 hit å 1 missed)
-        }
+
     }
          
 }

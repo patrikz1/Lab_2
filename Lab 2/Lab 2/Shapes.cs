@@ -11,7 +11,7 @@ namespace Lab_2
         public string? Shape { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public int Length { get; set; }
+        public double Length { get; set; }
         public int Points { get; set; }
 
 

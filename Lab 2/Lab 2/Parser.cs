@@ -46,15 +46,15 @@ namespace Lab_2
             //Replace spaces into empty strings in order to nullify whitespace and split rows based on ';'
             var Rows = csvData.Replace(" ","").Split(';').ToList();
             //Isolate only the first row (the header) and split the columns based on ','
-            var headerText = Rows[0].Split(',');
+            var headerText = Rows[0].Split(',').ToList();
 
             /*Make variables based on where the index of the headerText equals the string name
             of what im searching for to be able to assign the values correctly no matter what order the input comes in.*/
-            var columnShape = headerText.ToList().FindIndex(i => i.Equals("SHAPE"));
-            var columnX = headerText.ToList().FindIndex(i => i.Equals("X"));
-            var columnY = headerText.ToList().FindIndex(i => i.Equals("Y"));
-            var columnLength = headerText.ToList().FindIndex(i => i.Equals("LENGTH"));
-            var columnPoints = headerText.ToList().FindIndex(i => i.Equals("POINTS"));
+            var columnShape = headerText.FindIndex(i => i.Equals("SHAPE"));
+            var columnX = headerText.FindIndex(i => i.Equals("X"));
+            var columnY = headerText.FindIndex(i => i.Equals("Y"));
+            var columnLength = headerText.FindIndex(i => i.Equals("LENGTH"));
+            var columnPoints = headerText.FindIndex(i => i.Equals("POINTS"));
 
             List<Shapes> shapes = new List<Shapes>();
             //If there is any rows
@@ -74,7 +74,7 @@ namespace Lab_2
                                 Shape = columns[columnShape],
                                 X = Int32.Parse(columns[columnX]),
                                 Y = Int32.Parse(columns[columnY]),
-                                Length = Int32.Parse(columns[columnLength]),
+                                Length = Convert.ToDouble(columns[columnLength]),
                                 Points = Int32.Parse(columns[columnPoints]),
 
                             }) ;    
