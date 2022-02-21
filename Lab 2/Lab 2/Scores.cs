@@ -26,7 +26,8 @@ namespace Lab_2
             {
                 var typePoints = 2;
                 var instancePoints = circle.Points;
-                var area = Math.Pow(circle.Length,2) / 4 * Math.PI;
+                var PiTimesFour = Math.PI * 4;
+                var area = Math.Pow(circle.Length,2) / PiTimesFour;
 
                 var score = typePoints * instancePoints / area;
                 FinalScoreHit += score;
@@ -46,14 +47,15 @@ namespace Lab_2
             var Circles = from i in shapesMissed where i.Shape == "CIRCLE" select i;
             var Squares = from i in shapesMissed where i.Shape == "SQUARE" select i;
 
-            foreach (var circle in shapesMissed)
+            foreach (var circle in Circles)
             {
                 var typePoints = 2;
                 var instancePoints = circle.Points;
-                var area = Math.Pow(circle.Length, 2) / 4 * Math.PI;
+                var PiTimesFour = Math.PI * 4;
+                var area = Math.Pow(circle.Length, 2) / PiTimesFour;
 
                 var score = typePoints * instancePoints / area;
-                FinalScoreMiss += score / 4;
+                FinalScoreMiss += score;
             }
             foreach (var square in Squares)
             {
@@ -62,12 +64,12 @@ namespace Lab_2
                 var area = Math.Pow(square.Length / 4, 2);
 
                 var score = typePoints * instancePoints / area;
-                FinalScoreMiss += score / 4;
+                FinalScoreMiss += score;
             }
         }
         public void FinalScore()
         {
-            int finalScore = (int)Math.Round(FinalScoreHit - FinalScoreMiss);
+            int finalScore = (int)Math.Round(FinalScoreHit - FinalScoreMiss / 4);
             
             Console.WriteLine(finalScore);
         }
