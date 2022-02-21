@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace Lab_2
 {
     internal class pointer {
-        List<Shapes> shapes { get; set; }
         List<Shapes> shapesHit { get; set; }
         List<Shapes> shapesMissed { get; set; }
 
@@ -16,18 +15,13 @@ namespace Lab_2
 
         public pointer(int XCord, int YCord, List<Shapes> shapes)
         {
-            this.shapes = shapes;
-            this.XCord = XCord;
-            this.YCord = YCord;
-            // behöver kanske inte de "this." över ^ 
-
             HitOrMiss(XCord, YCord, shapes);
-            
         }
 
         public void HitOrMiss(int XCord, int YCord, List<Shapes> shapes)
         {
             var Circles = from i in shapes where i.Shape == "CIRCLE" select i;
+            var Squares = from i in shapes where i.Shape == "SQUARE" select i;
             shapesHit = new List<Shapes>();
             shapesMissed = new List<Shapes>();
 
@@ -38,8 +32,8 @@ namespace Lab_2
                 var CircleYValue = shape.Y;
                 var Radius = shape.Length / 2;
 
-                bool InsideCircle = ((XCord - CircleXValue) * (XCord - CircleXValue) +
-                (YCord - CircleYValue) * (YCord - CircleYValue) <= Radius * Radius);
+                bool InsideCircle = (XCord - CircleXValue) * (XCord - CircleXValue) +
+                (YCord - CircleYValue) * (YCord - CircleYValue) <= Radius * Radius;
                 if (InsideCircle)
                 {
                     shapesHit.Add(shape);
@@ -49,8 +43,26 @@ namespace Lab_2
                     shapesMissed.Add(shape);
                 }
             }
+            foreach (var shape in Squares)
+            {
+                var SquareXValue = shape.X;
+                var SquareYValue = shape.Y;
+                var Length = shape.Length;
 
-            
+                bool InsideSquare = (XCord - SquareXValue) * (XCord - SquareXValue) +
+                (YCord - SquareYValue) * (YCord - SquareYValue) <= Length * Length;
+                if (InsideSquare)
+                {
+                    shapesHit.Add(shape);
+                }
+                else
+                {
+                    shapesMissed.Add(shape);
+
+                }
+            }
+
+            Scores scores = new Scores(shapesHit, shapesMissed);
         }
 
     }

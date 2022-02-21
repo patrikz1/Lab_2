@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab_2
+{
+    internal class Scores
+    {
+        public Scores(List<Shapes> shapesHit, List<Shapes> shapesMissed)
+        {
+
+        }
+    }
+}
