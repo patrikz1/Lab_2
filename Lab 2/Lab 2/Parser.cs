@@ -46,7 +46,9 @@ namespace Lab_2
         public void CsvParser(string CsvInput)
         {
             //Replace spaces into empty strings in order to nullify whitespace and split rows based on ';'
-            var Rows = CsvInput.Replace(" ","").Split(';').ToList();
+            var Rows = CsvInput.Replace(" ","").Split(';')
+                .Where(row => !string.IsNullOrWhiteSpace(row)).Distinct().ToList();
+
             //Isolate only the first row (the header) and split the columns based on ','
             var HeaderColumns = Rows[0].Split(',').ToList();
 
