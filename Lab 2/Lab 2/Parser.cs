@@ -21,7 +21,8 @@ namespace Lab_2
         public void PointParser(string pointCord)
         {
             // Split the two inputs by comma
-            string[] pointcordSep = pointCord.Split(",");
+            string[] pointcordSep =  pointCord.Replace("\"" , "").Split(",");
+            
 
             int pointCordInt = 0;
             //Create a int array with the two split numbers and remove any inputs that is not integers (including whitespace)
