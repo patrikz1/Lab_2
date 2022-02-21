@@ -49,17 +49,17 @@ namespace Lab_2
                 var SquareXValue = shape.X;
                 var SquareYValue = shape.Y;
 
-                var Radius = Math.Pow(shape.Length / 4 / 2, 2) * 2;
-                var finalradius = Math.Sqrt(Radius);
+                var Radius = Math.Sqrt(Math.Pow(shape.Length / 4 / 2, 2) * 2);
+        
 
                 bool InsideSquare = Math.Pow(XCord - SquareXValue, 2) +
-                Math.Pow(YCord - SquareYValue, 2) < finalradius;
+                Math.Pow(YCord - SquareYValue, 2) < Radius;
 
-                if (InsideSquare)
+                if (InsideSquare == true)
                 {
                     shapesHit.Add(shape);
                 }
-                else
+                else if (InsideSquare == false)
                 {
                     shapesMissed.Add(shape);
 
