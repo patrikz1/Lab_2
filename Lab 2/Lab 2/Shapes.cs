@@ -8,6 +8,7 @@ namespace Lab_2
 {
     public class Shapes 
     {
+        //Structure of Shapes objects
         public string? Shape { get; set; }
         public int X { get; set; }
         public int Y { get; set; }

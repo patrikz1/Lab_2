@@ -37,7 +37,7 @@ namespace Lab_2
             }
             else
             {
-                Console.WriteLine("Not 2 valid coordinates separated by a comma, please try again!");
+                Console.WriteLine("Not 2 valid coordinates (integers) separated by a comma, please try again!");
                 Environment.Exit(1);
             }
 
@@ -101,7 +101,7 @@ namespace Lab_2
                 Environment.Exit(0);
             }
             //Send XCord and YCord from PointerParser (which was stored in variables at the top) as well as the list just created to constructor of pointer
-            pointer newpointer = new pointer(XCord, YCord, shapes);
+            Pointer newpointer = new Pointer(XCord, YCord, shapes);
         }
     }
 }
