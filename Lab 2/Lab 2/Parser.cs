@@ -52,13 +52,13 @@ namespace Lab_2
             //Isolate only the first row (the header) and split the columns based on ','
             var HeaderColumns = Rows[0].Split(',').ToList();
 
-            /*Make variables based on where the index of the headerText equals the string name
+            /*Make variables based on where the index of the headerText equals the string name (converted to uppercase)
             of what im searching for to be able to assign the values correctly no matter what order the input comes in.*/
-            var columnShape = HeaderColumns.FindIndex(i => i.Equals("SHAPE"));
-            var columnX = HeaderColumns.FindIndex(i => i.Equals("X"));
-            var columnY = HeaderColumns.FindIndex(i => i.Equals("Y"));
-            var columnLength = HeaderColumns.FindIndex(i => i.Equals("LENGTH"));
-            var columnPoints = HeaderColumns.FindIndex(i => i.Equals("POINTS"));
+            var columnShape = HeaderColumns.FindIndex(i => i.ToUpper().Equals("SHAPE"));
+            var columnX = HeaderColumns.FindIndex(i => i.ToUpper().Equals("X"));
+            var columnY = HeaderColumns.FindIndex(i => i.ToUpper().Equals("Y"));
+            var columnLength = HeaderColumns.FindIndex(i => i.ToUpper().Equals("LENGTH"));
+            var columnPoints = HeaderColumns.FindIndex(i => i.ToUpper().Equals("POINTS"));
 
             List<Shapes> shapes = new List<Shapes>();
             //If there is any rows
@@ -72,10 +72,10 @@ namespace Lab_2
                         var columns = row.Split(',');
                         //If there is 5 columns then..
                         if (columns.Count() == 5)
-                        {   //Add to list based on index which i specified above and parse Integers/Convert to double
+                        {   //Add to list based on index which i specified above and parse Integers/Convert to double and make Shape uppercase.
                             shapes.Add(new()  
                             {
-                                Shape = columns[columnShape],
+                                Shape = columns[columnShape].ToUpper(),
                                 X = Int32.Parse(columns[columnX]),
                                 Y = Int32.Parse(columns[columnY]),
                                 Length = Convert.ToDouble(columns[columnLength]),
@@ -89,10 +89,10 @@ namespace Lab_2
                             Console.WriteLine(" ' " + row +" ' " + " <-- Is not configured correctly, please add 5 valid inputs separated by a comma!");
                         }
                     }
-                }//Catch exceptions and display them for clarification
-                catch (Exception e)
+                }//Catch exceptions
+                catch (Exception)
                 {
-                    Console.WriteLine("Something went wrong : \n" + e);
+                    Console.WriteLine("Something went wrong, please try running the program again!");
                 }
             }// if Rows count is 0
             else

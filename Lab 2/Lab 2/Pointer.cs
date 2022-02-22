@@ -22,47 +22,53 @@ namespace Lab_2
             shapesHit = new List<Shapes>();
             shapesMissed = new List<Shapes>();
 
-
-            foreach (var shape in Circles)
+            if (Circles.Count() + Squares.Count() > 0)
             {
-                var CircleXValue = shape.X;
-                var CircleYValue = shape.Y;
-                double Radius = shape.Length / Math.PI / 2;
-
-                bool InsideCircle = Math.Pow(XCord - CircleXValue, 2) +
-                Math.Pow(YCord - CircleYValue, 2) < Math.Pow(Radius, 2);
-
-                if (InsideCircle == true)
+                foreach (var shape in Circles)
                 {
-                    shapesHit.Add(shape);
+                    var CircleXValue = shape.X;
+                    var CircleYValue = shape.Y;
+                    double Radius = shape.Length / Math.PI / 2;
+
+                    bool InsideCircle = Math.Pow(XCord - CircleXValue, 2) +
+                    Math.Pow(YCord - CircleYValue, 2) < Math.Pow(Radius, 2);
+
+                    if (InsideCircle == true)
+                    {
+                        shapesHit.Add(shape);
+                    }
+                    else if (InsideCircle == false)
+                    {
+                        shapesMissed.Add(shape);
+                    }
                 }
-                else if (InsideCircle == false)
+                foreach (var shape in Squares)
                 {
-                    shapesMissed.Add(shape);
+                    var SquareXValue = shape.X;
+                    var SquareYValue = shape.Y;
+
+                    var Radius = Math.Sqrt(Math.Pow(shape.Length / 4 / 2, 2) * 2);
+
+
+                    bool InsideSquare = XCord - SquareXValue + YCord - SquareYValue <= Radius;
+
+                    if (InsideSquare == true)
+                    {
+                        shapesHit.Add(shape);
+                    }
+                    else if (InsideSquare == false)
+                    {
+                        shapesMissed.Add(shape);
+
+                    }
                 }
+
+                Scores scores = new Scores(shapesHit, shapesMissed);
             }
-            foreach (var shape in Squares)
+            else
             {
-                var SquareXValue = shape.X;
-                var SquareYValue = shape.Y;
-
-                var Radius = Math.Sqrt(Math.Pow(shape.Length / 4 / 2, 2) * 2);
-
-
-                bool InsideSquare = XCord - SquareXValue + YCord - SquareYValue <= Radius;
-
-                if (InsideSquare == true)
-                {
-                    shapesHit.Add(shape);
-                }
-                else if (InsideSquare == false)
-                {
-                    shapesMissed.Add(shape);
-
-                }
+                Console.WriteLine("Could not find any valid Circles or Squares!");
             }
-
-            Scores scores = new Scores(shapesHit, shapesMissed);
         }
 
     }
