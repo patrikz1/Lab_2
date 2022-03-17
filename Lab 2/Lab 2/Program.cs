@@ -20,9 +20,15 @@ class Program
         }
         catch (Exception)
         {
-            Console.WriteLine("You encountered an issue, make sure you entered the 2 arguments with a space between them");
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Please enter arguments!");
+            }
+            else
+            {
+                Console.WriteLine("You encountered an issue, make sure you entered the 2 arguments with a space between them");
+            }
         }
-
     }
 
 }
