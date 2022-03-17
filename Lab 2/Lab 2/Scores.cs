@@ -78,7 +78,7 @@ namespace Lab_2
             //Calculate and round up finalScore to nearest integer
             int finalScore = (int)Math.Round(FinalScoreHit - FinalScoreMiss / 4);
             //Write the finalScore!
-            Console.WriteLine(finalScore);
+            Console.WriteLine("\n" + finalScore);
         }
 
     }

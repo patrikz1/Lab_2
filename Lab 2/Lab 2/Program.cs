@@ -7,26 +7,18 @@ class Program
         {
             var pointCord = args[0];
             var CsvInput = args[1];
-
-            //More likely to be just an empty string (which is parsed later) rather than null, but implemented to be fail-safe.
-            if (pointCord != null && CsvInput != null && pointCord != "" && CsvInput != "")
-            {
-                Parser parser = new Parser(pointCord, CsvInput);
-            }
-            else
-            {
-                Console.WriteLine("Null or empty values, try again!");
-            }
+            
+            Parser parser = new Parser(pointCord, CsvInput);
         }
         catch (Exception)
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("Please enter arguments!");
+                Console.WriteLine("\nPlease enter arguments!");
             }
             else
             {
-                Console.WriteLine("You encountered an issue, make sure you entered the 2 arguments with a space between them");
+                Console.WriteLine("\nYou encountered an issue, make sure you entered the 2 arguments with a space between them");
             }
         }
     }
