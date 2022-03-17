@@ -79,7 +79,6 @@ namespace Lab_2
             int finalScore = (int)Math.Round(FinalScoreHit - FinalScoreMiss / 4);
             //Write the finalScore!
             Console.WriteLine(finalScore);
-
         }
 
     }
